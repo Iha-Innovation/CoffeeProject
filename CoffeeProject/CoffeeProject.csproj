@@ -134,6 +134,12 @@
     <Compile Include="CategorieUC.Designer.cs">
       <DependentUpon>CategorieUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="CommandeUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CommandeUC.Designer.cs">
+      <DependentUpon>CommandeUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataAccess.cs" />
     <Compile Include="Details.cs" />
     <Compile Include="EmployeUC.cs">
@@ -161,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CategorieUC.resx">
       <DependentUpon>CategorieUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CommandeUC.resx">
+      <DependentUpon>CommandeUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmployeUC.resx">
       <DependentUpon>EmployeUC.cs</DependentUpon>
