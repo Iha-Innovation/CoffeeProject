@@ -122,11 +122,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArticleUC.cs">
+    <Compile Include="CategorieUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ArticleUC.Designer.cs">
-      <DependentUpon>ArticleUC.cs</DependentUpon>
+    <Compile Include="CategorieUC.Designer.cs">
+      <DependentUpon>CategorieUC.cs</DependentUpon>
     </Compile>
     <Compile Include="DataAccess.cs" />
     <Compile Include="Details.cs" />
@@ -138,8 +138,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ArticleUC.resx">
-      <DependentUpon>ArticleUC.cs</DependentUpon>
+    <EmbeddedResource Include="CategorieUC.resx">
+      <DependentUpon>CategorieUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

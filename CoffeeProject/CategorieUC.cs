@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CoffeeProject
 {
-    public partial class ArticleUC : UserControl
+    public partial class CategorieUC : UserControl
     {
-        public ArticleUC()
+        public CategorieUC()
         {
             InitializeComponent();
         }
