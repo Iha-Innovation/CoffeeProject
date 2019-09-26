@@ -16,5 +16,10 @@ namespace CoffeeProject
         {
             InitializeComponent();
         }
+
+        private void bunifuButton2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
