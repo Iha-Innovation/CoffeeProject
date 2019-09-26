@@ -1,6 +1,6 @@
 ﻿
 using System;
-namespace CafeteriaSystem
+namespace CoffeeProject
 {
     class Details
     {

@@ -4,9 +4,9 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Windows.Forms;
 
-namespace CafeteriaSystem
+namespace CoffeeProject
 {
-    class DataAccess
+     class DataAccess
     {
         string ConnectionString;
 
