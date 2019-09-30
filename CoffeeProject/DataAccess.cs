@@ -3,6 +3,7 @@ using System.Collections;
 using System.Data.SqlClient;
 using System.IO;
 using System.Windows.Forms;
+using System.Data.SQLite;
 
 namespace CoffeeProject
 {
@@ -17,15 +18,15 @@ namespace CoffeeProject
 
         public bool AddNewCategoryToDatabase(string CategoryName, string CategoryDescription, PictureBox CategoryPictureBox)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
                 connection.Open();
 
                 /*Start a local transaction*/
-                SqlTransaction sqlTran = connection.BeginTransaction();
+                SQLiteTransaction sqlTran = connection.BeginTransaction();
 
                 /*Enlist a command in the current transaction*/
-                SqlCommand command = connection.CreateCommand();
+                SQLiteCommand command = connection.CreateCommand();
                 command.Transaction = sqlTran;
 
                 /*THIS IS THE MAIN CODE FOR HASHING*/
@@ -64,7 +65,7 @@ namespace CoffeeProject
 
                     return true;
                 }
-                catch (Exception ee)
+                catch (Exception )
                 {
                     connection.Close();
                     return false;
@@ -76,12 +77,12 @@ namespace CoffeeProject
         {
             ArrayList CategoriesList = new ArrayList();
 
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT ID, CategoryName, CategoryPicture FROM Categories;", connection);
+                SQLiteCommand command = new SQLiteCommand("SELECT ID, CategoryName, CategoryPicture FROM Categories;", connection);
                 connection.Open();
 
-                SqlDataReader reader = command.ExecuteReader();
+                SQLiteDataReader reader = command.ExecuteReader();
 
                 if (reader.HasRows)
                 {
@@ -102,15 +103,15 @@ namespace CoffeeProject
 
         public bool AddNewProductToDatabase(string ProductName, decimal ProductPrice, int ProductCategoryID, string ProductDescription, byte[] ProductPicture)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
                 connection.Open();
 
                 /*Start a local transaction*/
-                SqlTransaction sqlTran = connection.BeginTransaction();
+                SQLiteTransaction sqlTran = connection.BeginTransaction();
 
                 /*Enlist a command in the current transaction*/
-                SqlCommand command = connection.CreateCommand();
+                SQLiteCommand command = connection.CreateCommand();
                 command.Transaction = sqlTran;
 
                 try
@@ -133,7 +134,7 @@ namespace CoffeeProject
 
                     return true;
                 }
-                catch (Exception ee)
+                catch (Exception)
                 {
                     connection.Close();
                     return false;
@@ -145,12 +146,12 @@ namespace CoffeeProject
         {
             ArrayList ProductsList = new ArrayList();
 
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT ID, ProductName, ProductPrice, ProductCategoryID, ProductDescription, ProductImage FROM Products;", connection);
+                SQLiteCommand command = new SQLiteCommand("SELECT ID, ProductName, ProductPrice, ProductCategoryID, ProductDescription, ProductImage FROM Products;", connection);
                 connection.Open();
 
-                SqlDataReader reader = command.ExecuteReader();
+                SQLiteDataReader reader = command.ExecuteReader();
 
                 if (reader.HasRows)
                 {
@@ -177,12 +178,12 @@ namespace CoffeeProject
         {
             ArrayList ProductsList = new ArrayList();
 
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT ID, ProductName, ProductPrice, ProductDescription, ProductImage FROM Products where ProductCategoryID = '" + CategoryID + "';", connection);
+                SQLiteCommand command = new SQLiteCommand("SELECT ID, ProductName, ProductPrice, ProductDescription, ProductImage FROM Products where ProductCategoryID = '" + CategoryID + "';", connection);
                 connection.Open();
 
-                SqlDataReader reader = command.ExecuteReader();
+                SQLiteDataReader reader = command.ExecuteReader();
 
                 if (reader.HasRows)
                 {
@@ -205,12 +206,12 @@ namespace CoffeeProject
 
         public int ReturnCategoryID(string CategoryName)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT ID FROM Categories where CategoryName = '" + CategoryName + "';", connection);
+                SQLiteCommand command = new SQLiteCommand("SELECT ID FROM Categories where CategoryName = '" + CategoryName + "';", connection);
                 connection.Open();
 
-                SqlDataReader reader = command.ExecuteReader();
+                SQLiteDataReader reader = command.ExecuteReader();
 
                 int CategoryID = 0;
 
@@ -229,12 +230,12 @@ namespace CoffeeProject
 
         public string ReturnCategoryName(int CategoryID)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT CategoryName FROM Categories where ID = '" + CategoryID + "';", connection);
+                SQLiteCommand command = new SQLiteCommand("SELECT CategoryName FROM Categories where ID = '" + CategoryID + "';", connection);
                 connection.Open();
 
-                SqlDataReader reader = command.ExecuteReader();
+                SQLiteDataReader reader = command.ExecuteReader();
 
                 string CategoryName = string.Empty;
 
@@ -255,12 +256,12 @@ namespace CoffeeProject
         {
             Details ProductDetails = new Details();
 
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT ProductName, ProductPrice, ProductCategoryID, ProductDescription, ProductImage FROM Products where ID = '" + ProductID + "';", connection);
+                SQLiteCommand command = new SQLiteCommand("SELECT ProductName, ProductPrice, ProductCategoryID, ProductDescription, ProductImage FROM Products where ID = '" + ProductID + "';", connection);
                 connection.Open();
 
-                SqlDataReader reader = command.ExecuteReader();
+                SQLiteDataReader reader = command.ExecuteReader();
 
                 if (reader.HasRows)
                 {
@@ -284,15 +285,15 @@ namespace CoffeeProject
         {
             int SaleID = ReturnSaleID();
 
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
                 connection.Open();
 
                 /*Start a local transaction*/
-                SqlTransaction sqlTran = connection.BeginTransaction();
+                SQLiteTransaction sqlTran = connection.BeginTransaction();
 
                 /*Enlist a command in the current transaction*/
-                SqlCommand command = connection.CreateCommand();
+                SQLiteCommand command = connection.CreateCommand();
                 command.Transaction = sqlTran;
 
                 try
@@ -329,7 +330,7 @@ namespace CoffeeProject
 
                     return true;
                 }
-                catch (Exception ee)
+                catch (Exception )
                 {
                     connection.Close();
                     return false;
@@ -343,12 +344,12 @@ namespace CoffeeProject
             try
             {
 
-                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
                 {
-                    SqlCommand command = new SqlCommand("SELECT MAX(ID) FROM Sales;", connection);
+                    SQLiteCommand command = new SQLiteCommand("SELECT MAX(ID) FROM Sales;", connection);
                     connection.Open();
 
-                    SqlDataReader reader = command.ExecuteReader();
+                    SQLiteDataReader reader = command.ExecuteReader();
 
                     if (reader.HasRows)
                     {
@@ -374,9 +375,9 @@ namespace CoffeeProject
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(ConnectionString))
+                using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
                 {
-                    SqlCommand command = new SqlCommand("Delete from Products where ID = '" + ProductID + "'", connection);
+                    SQLiteCommand command = new SQLiteCommand("Delete from Products where ID = '" + ProductID + "'", connection);
                     connection.Open();
 
                     if (command.ExecuteNonQuery() > 0)
@@ -395,15 +396,15 @@ namespace CoffeeProject
 
         public bool UpdateProduct(int ProductID, string ProductName, decimal ProductPrice, int ProductCategoryID, string ProductDescription, byte[] ProductPicture)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
                 connection.Open();
 
                 /*Start a local transaction*/
-                SqlTransaction sqlTran = connection.BeginTransaction();
+                SQLiteTransaction sqlTran = connection.BeginTransaction();
 
                 /*Enlist a command in the current transaction*/
-                SqlCommand command = connection.CreateCommand();
+                SQLiteCommand command = connection.CreateCommand();
                 command.Transaction = sqlTran;
 
                 try
@@ -427,7 +428,7 @@ namespace CoffeeProject
 
                     return true;
                 }
-                catch (Exception ee)
+                catch (Exception )
                 {
                     connection.Close();
                     return false;
@@ -439,12 +440,12 @@ namespace CoffeeProject
         {
             ArrayList SalesList = new ArrayList();
 
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT ID, SaleTime, SalesmanID, TotalBill FROM Sales;", connection);
+                SQLiteCommand command = new SQLiteCommand("SELECT ID, SaleTime, SalesmanID, TotalBill FROM Sales;", connection);
                 connection.Open();
 
-                SqlDataReader reader = command.ExecuteReader();
+                SQLiteDataReader reader = command.ExecuteReader();
 
                 if (reader.HasRows)
                 {
@@ -467,12 +468,12 @@ namespace CoffeeProject
 
         public string ReturnUserName(int UserID)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT Name FROM Users where ID = '" + UserID + "';", connection);
+                SQLiteCommand command = new SQLiteCommand("SELECT Name FROM Users where ID = '" + UserID + "';", connection);
                 connection.Open();
 
-                SqlDataReader reader = command.ExecuteReader();
+                SQLiteDataReader reader = command.ExecuteReader();
 
                 string UserName = string.Empty;
 
@@ -491,12 +492,12 @@ namespace CoffeeProject
 
         public int ReturnUserID(string UserEmail)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT ID FROM Users where Email = '" + UserEmail + "';", connection);
+                SQLiteCommand command = new SQLiteCommand("SELECT ID FROM Users where Email = '" + UserEmail + "';", connection);
                 connection.Open();
 
-                SqlDataReader reader = command.ExecuteReader();
+                SQLiteDataReader reader = command.ExecuteReader();
 
                 int UserID = 0;
 
@@ -517,12 +518,12 @@ namespace CoffeeProject
         {
             string PasswordFromDatabase = string.Empty;
 
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT Password FROM Users where Email = '" + UserEmail + "';", connection);
+                SQLiteCommand command = new SQLiteCommand("SELECT Password FROM Users where Email = '" + UserEmail + "';", connection);
                 connection.Open();
 
-                SqlDataReader reader = command.ExecuteReader();
+                SQLiteDataReader reader = command.ExecuteReader();
 
                 if (reader.HasRows)
                 {
@@ -545,9 +546,9 @@ namespace CoffeeProject
         {
             
 
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
-                SqlCommand command = new SqlCommand("Insert into Users (Name, Role, Email, Password) values ('" + UserName + "', 'Salesman', '" + UserEmail + "', '" + UserPassword + "');", connection);
+                SQLiteCommand command = new SQLiteCommand("Insert into Users (Name, Role, Email, Password) values ('" + UserName + "', 'Salesman', '" + UserEmail + "', '" + UserPassword + "');", connection);
                 connection.Open();
 
                 int RowsAffected = command.ExecuteNonQuery();
@@ -564,12 +565,12 @@ namespace CoffeeProject
         {
             ArrayList ProductsList = new ArrayList();
 
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
-                SqlCommand command = new SqlCommand("SELECT ProductName, ProductPrice, ProductQuantity, ProductTotal FROM SaleItems where SaleID = '" + SaleID + "';", connection);
+                SQLiteCommand command = new SQLiteCommand("SELECT ProductName, ProductPrice, ProductQuantity, ProductTotal FROM SaleItems where SaleID = '" + SaleID + "';", connection);
                 connection.Open();
 
-                SqlDataReader reader = command.ExecuteReader();
+                SQLiteDataReader reader = command.ExecuteReader();
 
                 if (reader.HasRows)
                 {

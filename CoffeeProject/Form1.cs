@@ -29,7 +29,8 @@ namespace CoffeeProject
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            Progress p = new Progress();
+            p.ShowDialog();
         }
     }
 }

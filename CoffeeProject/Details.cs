@@ -15,6 +15,6 @@ namespace CoffeeProject
 
         public int SaleID;
         public DateTime SaleTime;
-        public int SalesmanID;
+    
     }
 }
