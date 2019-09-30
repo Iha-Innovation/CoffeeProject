@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace CoffeeProject
 {
-    public partial class CategorieUC : UserControl
+    public partial class HistoriqueUC : UserControl
     {
-        public CategorieUC()
+        public HistoriqueUC()
         {
             InitializeComponent();
-        }
-
-        private void CategorieUC_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

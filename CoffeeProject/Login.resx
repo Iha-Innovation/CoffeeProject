@@ -153,10 +153,11 @@
   </data>
   <data name="bunifuButton1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABwAAAAdCAYAAAC5UQwxAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABoSURBVEhL7c6xDcAgDERRyoyRkjKjMEJKtrA3T47gkvIc
-        mjvpNxbSo2ybmZ3Ik6rBzOFwufuTGYwW3Afitn7IahjBCeQkkJ5AegLpCaQnkJ5AetvBtnrEDEYPbg6H
-        e/wiqY6OoP5cKS8heJyqlfJIgwAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAyCAYAAAAayliMAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACMSURBVGhD7c+hEYAwEAXRSMpAIimFEpB0kXQOBzmJX8Ls
+        zTyTifhbfnO11jm0QSw5u188rK21cySxecv5T0C8vX/8qntzzjcAYQDNAJoBNANoBtAMoBlAM4BmAM0A
+        mgE0A2gG0AygGUAzgGYAzQCaATQDaL8L2N4+fVlsPnJ+v3jY76pBHGHK6SNfKRdA0SMFVZt+EAAAAABJ
+        RU5ErkJggg==
 </value>
   </data>
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -21428,13 +21429,4 @@
         f5nysVP+8K5iBvtM5ZeGH3N3NRyXaSSksxDJ8hG5qyaBT8j/2Q==
 </value>
   </data>
-  <metadata name="bunifuDragControl1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>141, 17</value>
-  </metadata>
-  <metadata name="bunifuDragControl2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>301, 17</value>
-  </metadata>
-  <metadata name="bunifuDragControl3.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>461, 17</value>
-  </metadata>
 </root>

@@ -394,7 +394,7 @@ namespace CoffeeProject
             }
         }
 
-        public bool UpdateProduct(int ProductID, string ProductName, decimal ProductPrice, int ProductCategoryID, string ProductDescription, byte[] ProductPicture)
+        public bool UpdateProduct(int ProductID, string ProductName, decimal ProductPrice, int ProductCategoryID, byte[] ProductPicture)
         {
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
@@ -414,7 +414,6 @@ namespace CoffeeProject
                     command.Parameters.AddWithValue("@ProductName", ProductName);
                     command.Parameters.AddWithValue("@ProductPrice", ProductPrice);
                     command.Parameters.AddWithValue("@ProductCategoryID", ProductCategoryID);
-                    command.Parameters.AddWithValue("@ProductDescription", ProductDescription);
                     command.Parameters.AddWithValue("@ProductImage", ProductPicture);
 
                     command.CommandText =
@@ -435,6 +434,48 @@ namespace CoffeeProject
                 }
             }
         }
+
+
+
+        public bool RemoveProduct(int ProductID)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                /*Start a local transaction*/
+                SqlTransaction sqlTran = connection.BeginTransaction();
+
+                /*Enlist a command in the current transaction*/
+                SqlCommand command = connection.CreateCommand();
+                command.Transaction = sqlTran;
+
+                try
+                {
+                    // Execute separate commands.
+                    command.Parameters.AddWithValue("@ProductID", ProductID);
+                    
+
+                    command.CommandText =
+                       "delete from Article  where id = @ProductID";
+                    command.ExecuteNonQuery();
+
+                    // Commit the transaction.
+                    sqlTran.Commit();
+
+                    connection.Close();
+
+                    return true;
+                }
+                catch (Exception ee)
+                {
+                    connection.Close();
+                    return false;
+                }
+            }
+        }
+
+
 
         public ArrayList RetreiveAllSales()
         {
