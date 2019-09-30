@@ -1317,6 +1317,7 @@
             this.Controls.Add(this.bunifuLabel1);
             this.Name = "CategorieUC";
             this.Size = new System.Drawing.Size(776, 595);
+            this.Load += new System.EventHandler(this.CategorieUC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bunifuPictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

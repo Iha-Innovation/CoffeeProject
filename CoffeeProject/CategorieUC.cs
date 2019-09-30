@@ -16,5 +16,10 @@ namespace CoffeeProject
         {
             InitializeComponent();
         }
+
+        private void CategorieUC_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

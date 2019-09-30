@@ -17,6 +17,7 @@ namespace CoffeeProject
             Application.Exit();
         }
 
+
         private void BtnLogin_Click(object sender, EventArgs e)
         {
             string UserEmail = EmailBox.Text;
@@ -60,6 +61,7 @@ namespace CoffeeProject
                 return false;
             }
             else return true;
+
         }
     }
 }
