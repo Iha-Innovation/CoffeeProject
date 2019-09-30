@@ -149,6 +149,11 @@ namespace CoffeeProject
             bunifuPictureBox1.Image = null;
         }
 
+        private void bunifuButton14_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void bunifuButton12_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Voulez vous vraiment supprimer cet article?", "Warning", MessageBoxButtons.YesNo) == DialogResult.Yes)
