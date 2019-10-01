@@ -46,6 +46,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.employeUC1 = new CoffeeProject.EmployeUC();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -109,7 +110,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(209, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(715, 88);
+            this.panel2.Size = new System.Drawing.Size(886, 88);
             this.panel2.TabIndex = 9;
             // 
             // panel3
@@ -275,16 +276,25 @@
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // employeUC1
+            // 
+            this.employeUC1.Location = new System.Drawing.Point(214, 110);
+            this.employeUC1.Margin = new System.Windows.Forms.Padding(2);
+            this.employeUC1.Name = "employeUC1";
+            this.employeUC1.Size = new System.Drawing.Size(835, 479);
+            this.employeUC1.TabIndex = 10;
+            // 
+            // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(924, 503);
+            this.ClientSize = new System.Drawing.Size(1095, 503);
+            this.Controls.Add(this.employeUC1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.Name = "Form1";
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Name = "Dashboard";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel2.ResumeLayout(false);
@@ -313,6 +323,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private EmployeUC employeUC1;
     }
 }
 

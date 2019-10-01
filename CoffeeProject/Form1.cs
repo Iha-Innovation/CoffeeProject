@@ -31,6 +31,7 @@ namespace CoffeeProject
         {
             Progress p = new Progress();
             p.ShowDialog();
+          
         }
     }
 }

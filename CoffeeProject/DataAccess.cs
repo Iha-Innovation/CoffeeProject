@@ -394,10 +394,11 @@ namespace CoffeeProject
             }
         }
 
-        public bool UpdateProduct(int ProductID, string ProductName, decimal ProductPrice, int ProductCategoryID, byte[] ProductPicture)
+        public bool Update(string Table,string[] parameters,string[] values)
         {
             using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
+                string requete = "";
                 connection.Open();
 
                 /*Start a local transaction*/
@@ -406,18 +407,22 @@ namespace CoffeeProject
                 /*Enlist a command in the current transaction*/
                 SQLiteCommand command = connection.CreateCommand();
                 command.Transaction = sqlTran;
-
+                
+                for(int i=0;i<=parameters.Length;i++)
+                {
+                    command.Parameters.AddWithValue("@" + parameters[i], values[i]);
+                }
+                for (int i = 0; i <= parameters.Length; i++)
+                {
+                    requete += parameters[i] + "=@" + parameters[i]+" ";
+                }
                 try
                 {
                     // Execute separate commands.
-                    command.Parameters.AddWithValue("@ProductID", ProductID);
-                    command.Parameters.AddWithValue("@ProductName", ProductName);
-                    command.Parameters.AddWithValue("@ProductPrice", ProductPrice);
-                    command.Parameters.AddWithValue("@ProductCategoryID", ProductCategoryID);
-                    command.Parameters.AddWithValue("@ProductImage", ProductPicture);
+                   
 
                     command.CommandText =
-                       "Update Products set ProductName = @ProductName, ProductPrice = @ProductPrice, ProductCategoryID = @ProductCategoryID, ProductDescription = @ProductDescription, ProductImage=@ProductImage where ID = @ProductID";
+                       "Update "+Table+" set "+requete+" where ID = @"+parameters[0];
                     command.ExecuteNonQuery();
 
                     // Commit the transaction.
@@ -437,27 +442,27 @@ namespace CoffeeProject
 
 
 
-        public bool RemoveProduct(int ProductID)
+        public bool Remove(string Table,string ID)
         {
-            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SQLiteConnection connection = new SQLiteConnection(ConnectionString))
             {
                 connection.Open();
 
                 /*Start a local transaction*/
-                SqlTransaction sqlTran = connection.BeginTransaction();
+                SQLiteTransaction sqlTran = connection.BeginTransaction();
 
                 /*Enlist a command in the current transaction*/
-                SqlCommand command = connection.CreateCommand();
+                SQLiteCommand command = connection.CreateCommand();
                 command.Transaction = sqlTran;
 
                 try
                 {
                     // Execute separate commands.
-                    command.Parameters.AddWithValue("@ProductID", ProductID);
-                    
+                    command.Parameters.AddWithValue("@ID", ID);
+                    command.Parameters.AddWithValue("@Table", Table);
 
                     command.CommandText =
-                       "delete from Article  where id = @ProductID";
+                       "delete from "+Table+"  where id = @ID";
                     command.ExecuteNonQuery();
 
                     // Commit the transaction.
@@ -467,9 +472,10 @@ namespace CoffeeProject
 
                     return true;
                 }
-                catch (Exception ee)
+                catch (SQLiteException ee)
                 {
                     connection.Close();
+                    MessageBox.Show(ee.Message);
                     return false;
                 }
             }

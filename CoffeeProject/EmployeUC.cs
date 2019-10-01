@@ -16,5 +16,10 @@ namespace CoffeeProject
         {
             InitializeComponent();
         }
+
+        private void maj1_TrushButton(object sender, EventArgs e)
+        {
+            maj1.trush("commande","1");
+        }
     }
 }

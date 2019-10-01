@@ -28,8 +28,8 @@ namespace CoffeeProject
 
             ProductPicture = GivenProductPicture;
         }
-      
-    
+
+
         private void bunifuButton5_Click(object sender, EventArgs e)
         {
             DataAccess _DataAccess = new DataAccess();
@@ -65,14 +65,14 @@ namespace CoffeeProject
             bunifuTextBox3.Text = ProductName;
             bunifuTextBox4.Text = bunifuTextBox4.ToString();
             bunifuDropdown1.Text = ProductCategory;
-           
+
             MemoryStream ms = new MemoryStream(ProductPicture);
             bunifuPictureBox1.Image = Image.FromStream(ms);
 
             DataAccess _DataAccess = new DataAccess();
 
-          
-        
+
+
 
             foreach (Details Category in _DataAccess.RetreiveAllCategoriesFromDatabase())
             {
@@ -108,13 +108,11 @@ namespace CoffeeProject
 
                 /*closing the memory stream*/
                 ms.Close();
-
-                if (_DataAccess.UpdateProduct(ProductID, ProductName, ProductPrice, ProductCategoryID, MyProductPicture))
-                {
-                    this.Close();
-                }
-                else MessageBox.Show("Produit n'est pas mis à jour", "Erreur", MessageBoxButtons.OK);
             }
+
+
+            else MessageBox.Show("Produit n'est pas mis à jour", "Erreur", MessageBoxButtons.OK);
+
         }
 
         private void Close()
@@ -167,7 +165,7 @@ namespace CoffeeProject
                 /*initializing memory stream class for creating a stream of binary numbers*/
                 MemoryStream ms = new MemoryStream();
 
-           
+
 
                 /*Array of Binary numbers that have been converted*/
                 byte[] MyProductPicture = ms.GetBuffer();
@@ -175,9 +173,9 @@ namespace CoffeeProject
                 /*closing the memory stream*/
                 ms.Close();
 
-                if (_DataAccess.RemoveProduct(ProductID))
+                if (_DataAccess.Remove("x", ProductID.ToString()))
                 {
-                    this.Close();
+
                 }
                 else MessageBox.Show("Produit non supprimé", "Erreur", MessageBoxButtons.OK);
             }
